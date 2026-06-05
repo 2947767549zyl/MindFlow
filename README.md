@@ -1,6 +1,6 @@
 # MindFlow
 
-> 一个面向商业使用的 Java Agent CLI 产品，对标 Claude Code。  
+> 一个基于本地终端原生使用的 Java Agent CLI 产品，对标 Claude Code。  
 > 从 ReAct 循环起步，逐步演进至多 Agent 协作、MCP 协议集成、Skill 系统等完整 Agent 产品形态。
 
 [![Java 17](https://img.shields.io/badge/Java-17-blue.svg)](https://adoptium.net/)
@@ -10,7 +10,7 @@
 
 ## 概览
 
-MindFlow 是一个**自研的 Java Agent CLI**，不依赖 Spring / Spring AI / LangChain4j 等框架，核心协议与编排层均为手写实现。它在终端中运行，通过命令行与用户交互，可自主完成文件操作、代码理解、联网搜索、浏览器自动化等任务。
+MindFlow 是一个**自研的 Java Agent CLI**，基于LangChain4j 等框架。它在终端中运行，通过命令行与用户交互，可自主完成文件操作、代码理解、联网搜索、浏览器自动化等任务。
 
 ![demo](img/mindflow-demo.png)
 mindflow
@@ -203,7 +203,22 @@ json { "mcpServers": { "fetch": { "command": "uvx", "args": ["mcp-server-fetch"]
 ---
 
 ## 项目结构
-src/main/java/com/mindflow/ ├── agent/ # Agent 执行引擎（ReAct / Plan / Multi-Agent） ├── cli/ # CLI 入口与命令解析 ├── llm/ # LLM 客户端抽象与实现 ├── context/ # 上下文策略与 Token 管理 ├── memory/ # 分层记忆系统（短期 / 长期） ├── plan/ # DAG 执行计划 ├── rag/ # 代码索引与语义检索 ├── tool/ # 工具注册与并行执行 ├── hitl/ # 人工审批系统 ├── policy/ # 安全策略（路径围栏 / 命令黑名单 / 审计） ├── web/ # 联网搜索与页面抓取 ├── mcp/ # MCP 协议客户端（JSON-RPC / 双通道传输） ├── browser/ # Chrome DevTools 会话管理 ├── skill/ # Skill 系统（SKILL.md 加载器） └── util/ # 工具类
+src/main/java/com/mindflow/ 
+├── agent/ # Agent 执行引擎（ReAct / Plan / Multi-Agent） 
+├── cli/ # CLI 入口与命令解析 
+├── llm/ # LLM 客户端抽象与实现 
+├── context/ # 上下文策略与 Token 管理 
+├── memory/ # 分层记忆系统（短期 / 长期） 
+├── plan/ # DAG 执行计划 
+├── rag/ # 代码索引与语义检索 
+├── tool/ # 工具注册与并行执行 
+├── hitl/ # 人工审批系统 
+├── policy/ # 安全策略（路径围栏 / 命令黑名单 / 审计） 
+├── web/ # 联网搜索与页面抓取 
+├── mcp/ # MCP 协议客户端（JSON-RPC / 双通道传输） 
+├── browser/ # Chrome DevTools 会话管理 
+├── skill/ # Skill 系统（SKILL.md 加载器） 
+└── util/ # 工具类
 ---
 
 ## 设计理念
