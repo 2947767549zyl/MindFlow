@@ -12,8 +12,6 @@
 
 MindFlow 是一个**自研的 Java Agent CLI**，基于LangChain4j 等框架。它在终端中运行，通过命令行与用户交互，可自主完成文件操作、代码理解、联网搜索、浏览器自动化等任务。
 
-![demo](img/mindflow-demo.png)
-mindflow
 ### 核心能力
 
 | 能力 | 说明 |
