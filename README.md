@@ -3,8 +3,8 @@
 > 一个基于本地终端原生使用的 Java Agent CLI 产品，对标 Claude Code。  
 > 从 ReAct 循环起步，逐步演进至多 Agent 协作、MCP 协议集成、Skill 系统等完整 Agent 产品形态。
 
-[![Java 17](https://img.shields.io/badge/Java-17-blue.svg)](https://adoptium.net/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+<img width="1522" height="779" alt="image" src="https://github.com/user-attachments/assets/5ccc34be-76d4-4884-a918-f240564d2941" />
+
 
 ---
 
