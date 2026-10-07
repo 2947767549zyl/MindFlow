@@ -1,0 +1,445 @@
+@import './reset.css';
+@import './nprogress.css';
+@import './transition.css';
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content {
+  margin: 3px 0;
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content::before {
+  left: 8px;
+  right: 8px;
+  border-radius: 10px;
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content--selected .n-menu-item-content-header {
+  font-weight: 600;
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-group-title {
+  padding-left: 20px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content-header {
+  font-size: 13.5px;
+  color: rgb(255 255 255 / 0.72);
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content__icon {
+  color: rgb(255 255 255 / 0.62);
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content:hover .n-menu-item-content-header,
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content:hover .n-menu-item-content__icon {
+  color: #fff;
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-group-title {
+  color: rgb(255 255 255 / 0.4);
+}
+
+/* Override @sa/materials admin-layout floating-panel shell (node_modules, cannot patch) to a flush full-bleed sider + top bar. */
+aside[class*='layout-sider'] {
+  left: 0 !important;
+  top: 0 !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+[class*='layout-header-placement'] {
+  top: 0 !important;
+  right: 0 !important;
+}
+
+.gradient-action {
+  background: var(--brand-grad);
+  box-shadow: 0 8px 18px -10px rgb(76 62 226 / 0.85);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.gradient-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px -10px rgb(76 62 226 / 0.95);
+}
+
+.gradient-action:active {
+  transform: translateY(0);
+}
+
+.ai-avatar {
+  display: inline-flex;
+  height: 36px;
+  width: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--brand-grad);
+  color: #fff;
+  box-shadow: 0 8px 18px -10px rgb(76 62 226 / 0.75);
+}
+
+.ai-card {
+  border: 1px solid rgb(15 23 42 / 0.07);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(16 24 40 / 0.06), 0 10px 26px -18px rgb(16 24 40 / 0.22);
+  padding: 14px 16px;
+}
+
+html.dark .ai-card {
+  border-color: rgb(255 255 255 / 0.08);
+  background: rgb(35 35 35);
+}
+
+/* markdown 包（vue-markdown-shiki 的 vp-doc）默认给 h2 加了 border-top + 48px/24px 间距，
+   与 --- 渲染出的 hr 叠在一起会变成"两条线夹一大块空白"；此处按聊天正文的密度收紧 */
+.ai-card .vp-doc h1,
+.ai-card .vp-doc h2,
+.ai-card .vp-doc h3,
+.ai-card .vp-doc h4 {
+  margin: 14px 0 8px;
+  border-top: none;
+  padding-top: 0;
+  line-height: 1.45;
+}
+
+.ai-card .vp-doc h1 {
+  font-size: 19px;
+}
+
+.ai-card .vp-doc h2 {
+  font-size: 16.5px;
+}
+
+.ai-card .vp-doc h3,
+.ai-card .vp-doc h4 {
+  font-size: 15px;
+}
+
+.ai-card .vp-doc > :first-child {
+  margin-top: 0;
+}
+
+.ai-card .vp-doc p,
+.ai-card .vp-doc summary {
+  margin: 8px 0;
+  line-height: 1.75;
+}
+
+.ai-card .vp-doc ul,
+.ai-card .vp-doc ol {
+  margin: 8px 0;
+}
+
+.ai-card .vp-doc li + li {
+  margin-top: 4px;
+}
+
+.ai-card .vp-doc hr {
+  margin: 12px 0;
+  border: none;
+  border-top: 1px dashed rgb(15 23 42 / 0.14);
+}
+
+.ai-card .vp-doc table {
+  margin: 10px 0;
+}
+
+.ai-card .vp-doc blockquote {
+  margin: 8px 0;
+}
+
+.ai-card .vp-doc .custom-block {
+  margin: 8px 0;
+}
+
+.user-bubble {
+  display: inline-block;
+  max-width: 76%;
+  border-radius: 16px 16px 4px 16px;
+  background: var(--brand-grad);
+  padding: 11px 15px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #fff;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: 0 10px 22px -14px rgb(76 62 226 / 0.9);
+}
+
+.send-btn {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.send-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+.send-btn--stop {
+  background: linear-gradient(135deg, rgb(245 158 11), rgb(239 68 68));
+  box-shadow: 0 10px 22px -14px rgb(239 68 68 / 0.9);
+}
+
+.chat-input-shell {
+  border-radius: 16px;
+}
+
+.mf-dlg {
+  display: flex;
+  min-width: 400px;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.mf-dlg__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.mf-dlg__badge {
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mf-dlg__badge--high {
+  background: rgb(208 48 80 / 0.12);
+  color: #d03050;
+}
+
+.mf-dlg__badge--medium {
+  background: rgb(240 160 32 / 0.16);
+  color: #b45309;
+}
+
+.mf-dlg__tool {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgb(var(--text-1));
+}
+
+.mf-dlg__label {
+  margin-bottom: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgb(var(--text-3));
+}
+
+.mf-dlg__reason {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: rgb(var(--text-2));
+}
+
+.mf-dlg__path {
+  border: 1px solid rgb(15 23 42 / 0.08);
+  border-radius: 10px;
+  background: rgb(15 23 42 / 0.03);
+  padding: 8px 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgb(var(--text-1));
+  word-break: break-all;
+}
+
+.mf-dlg__pre {
+  max-height: 176px;
+  margin: 0;
+  overflow: auto;
+  border: 1px solid rgb(15 23 42 / 0.08);
+  border-radius: 10px;
+  background: rgb(15 23 42 / 0.03);
+  padding: 9px 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: rgb(var(--text-2));
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.mf-dlg__scroll {
+  display: flex;
+  max-height: 320px;
+  flex-direction: column;
+  gap: 8px;
+  overflow: auto;
+}
+
+.mf-dlg__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  border: 1px solid rgb(15 23 42 / 0.06);
+  border-radius: 11px;
+  background: rgb(15 23 42 / 0.015);
+  padding: 9px 11px;
+}
+
+.mf-dlg__step-idx {
+  display: inline-flex;
+  height: 20px;
+  min-width: 20px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgb(var(--primary-color) / 0.12);
+  color: rgb(var(--primary-color));
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mf-dlg__step-desc {
+  min-width: 0;
+  flex: 1;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgb(var(--text-1));
+}
+
+.mf-dlg__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
+.mf-dlg__err {
+  margin-top: 3px;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: #d03050;
+  word-break: break-word;
+}
+
+.mf-opt-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.mf-opt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid rgb(15 23 42 / 0.12);
+  border-radius: 10px;
+  background: rgb(var(--container-bg-color));
+  padding: 7px 11px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mf-opt:hover {
+  border-color: rgb(var(--primary-color) / 0.5);
+  background: rgb(var(--primary-color) / 0.04);
+}
+
+.mf-opt--on {
+  border-color: rgb(var(--primary-color));
+  background: rgb(var(--primary-color) / 0.09);
+}
+
+.mf-opt__head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.mf-opt__label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgb(var(--text-1));
+}
+
+.mf-opt__rec {
+  border-radius: 999px;
+  background: var(--brand-grad);
+  padding: 0 7px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.mf-opt__reason {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: rgb(var(--text-3));
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content--selected::before {
+  background: var(--brand-grad);
+  opacity: 1;
+  box-shadow: 0 8px 20px -10px rgb(6 182 212 / 0.8);
+}
+
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content--selected .n-menu-item-content-header,
+#__GLOBAL_SIDER_MENU__ .n-menu-item-content--selected .n-menu-item-content__icon {
+  color: #fff;
+}
+
+/* Design tokens: text tiers (primary/secondary/tertiary), card shadows, module category colors.
+   Single-accent + low-saturation category discipline from the Niord reference. */
+:root {
+  --text-1: 24 28 35;
+  --text-2: 90 98 112;
+  --text-3: 140 148 162;
+  --shadow-card: 0 1px 3px rgb(16 24 40 / 0.06), 0 8px 24px -12px rgb(16 24 40 / 0.1);
+  --shadow-pop: 0 8px 32px -8px rgb(16 24 40 / 0.16);
+  --mod-search: 59 130 246;
+  --mod-generate: 139 92 246;
+  --mod-memory: 236 72 153;
+  --mod-mcp: 245 158 11;
+  --mod-other: 100 116 139;
+  --mod-file: 20 184 166;
+  --mod-danger: 208 48 80;
+  --brand-grad: linear-gradient(135deg, rgb(56 72 216) 0%, rgb(122 72 232) 100%);
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+}
+
+html.dark {
+  --text-1: 236 238 242;
+  --text-2: 168 176 190;
+  --text-3: 122 130 145;
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+  --shadow-pop: 0 8px 32px -8px rgb(0 0 0 / 0.6);
+  --mod-search: 96 165 250;
+  --mod-generate: 167 139 250;
+  --mod-memory: 244 114 182;
+  --mod-mcp: 251 191 36;
+  --mod-other: 148 163 184;
+  --mod-file: 45 212 191;
+  --mod-danger: 248 113 133;
+  --brand-grad: linear-gradient(135deg, rgb(34 211 238) 0%, rgb(96 165 250) 100%);
+}
